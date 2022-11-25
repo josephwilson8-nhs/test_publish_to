@@ -1,3 +1,3 @@
-# test_publish_to
+# test_publish_to_and_from
 
-This is the destination repository being used to explore options for publishing releases from the private RAP CoP repo to the public version.
+This is either the source or destination repository being used to explore options for publishing releases from the private RAP CoP repo to the public version.
