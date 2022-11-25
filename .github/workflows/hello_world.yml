@@ -9,3 +9,8 @@ jobs:
     steps:
       - name: Say Hello World
         run: echo Hello World
+      
+      - uses: actions/checkout@v3
+        
+      - name: Print Branch name
+        run: echo $GITHUB_REF
