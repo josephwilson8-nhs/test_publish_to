@@ -16,7 +16,6 @@ jobs:
           git remote add public https://github.com/josephwilson8-nhs/test_publish_to.git
       - name: Read the release name and create a branch. Push branch to private and public.
         run: |
-          
           RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
           git branch release/$RELEASE_NAME
           git push origin release/$RELEASE_NAME
