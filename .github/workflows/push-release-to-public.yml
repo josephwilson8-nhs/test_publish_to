@@ -22,7 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push branch to private and public
         run: |
-          git push -u origin release/$RELEASE_NAME
+          git push -u -f origin release/$RELEASE_NAME
           git push -u -f public release/$RELEASE_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
