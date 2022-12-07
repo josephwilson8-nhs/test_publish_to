@@ -4,7 +4,7 @@ on:
     types: [published]
   workflow_dispatch:
     
-
+# add conditional gh repo view --json isPrivate | jq -r '.isPrivate'
 jobs:
   push-release:
     runs-on: 'ubuntu-latest'
@@ -14,7 +14,6 @@ jobs:
       - name: Add the public repository as a remote
         run: |
           git remote add public https://github.com/josephwilson8-nhs/test_publish_to.git
-          git pull public main --rebase
       - name: Read the release name and create a branch
         run: |
           RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
@@ -24,6 +23,6 @@ jobs:
       - name: Push branch to private and public
         run: |
           git push -u origin release/$RELEASE_NAME
-          git push -u public release/$RELEASE_NAME
+          git push -u -f public release/$RELEASE_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
