@@ -14,7 +14,7 @@ jobs:
       - name: Add the public repository as a remote
         run: |
           git remote add public https://github.com/josephwilson8-nhs/test_publish_to.git
-          git pull public main --ff-only
+          git pull
       - name: Read the release name and create a branch
         run: |
           RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
