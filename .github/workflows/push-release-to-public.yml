@@ -25,5 +25,5 @@ jobs:
       - name: Push branch to private and public
         run:
           git push --set-upstream private release/$RELEASE_NAME
-          git push --set-upstream public release/$RELEASE_NAME
+          git push public
 
