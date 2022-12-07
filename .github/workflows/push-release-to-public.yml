@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Push branch to private and public
-        run:
+        run: |
           git push --set-upstream private release/$RELEASE_NAME
           git push public
 
