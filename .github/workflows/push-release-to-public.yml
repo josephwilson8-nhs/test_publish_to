@@ -15,7 +15,7 @@ jobs:
         run: |
           RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
           git checkout -b release/$RELEASE_NAME
-          git push
+          git push --set-upstream origin release/$RELEASE_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
