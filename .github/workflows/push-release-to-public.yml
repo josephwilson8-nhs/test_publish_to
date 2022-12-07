@@ -23,4 +23,4 @@ jobs:
           git push origin release/$RELEASE_NAME
           git push public release/$RELEASE_NAME
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_EXTENDED }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
