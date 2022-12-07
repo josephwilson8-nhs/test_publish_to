@@ -4,7 +4,7 @@ on:
     types: [published]
   workflow_dispatch:
 
-permissions: read-all|write-all
+permissions: write-all
 
 # add conditional gh repo view --json isPrivate | jq -r '.isPrivate'
 jobs:
