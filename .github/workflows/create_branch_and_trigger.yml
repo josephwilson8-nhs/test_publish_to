@@ -12,12 +12,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Read the release name and create a branch.
+      
+      - name: Read the release name
         run: |
-          RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
-          # git branch release/$RELEASE_NAME
-          # git push origin release/$RELEASE_NAME
+          echo "RELEASE_BRANCH_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a branch.
+        run: |
+          # git branch ${{ env.RELEASE_BRANCH_NAME }}
+          # git push origin ${{ env.RELEASE_BRANCH_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -27,4 +32,4 @@ jobs:
           event-type: release_event
           token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
           repository: josephwilson8-nhs/test_publish_to
-          client-payload: '{"branch": "release/$RELEASE_NAME"}'
+          client-payload: '{"branch": "${{ env.RELEASE_BRANCH_NAME }}"}'
