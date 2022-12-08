@@ -15,7 +15,7 @@ jobs:
       
       - name: Read the release name
         run: |
-          echo "RELEASE_BRANCH_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')" >> $GITHUB_ENV
+          echo "RELEASE_BRANCH_NAME=release/$(gh release view v0.0.1 --json name | jq -r '.name')" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
