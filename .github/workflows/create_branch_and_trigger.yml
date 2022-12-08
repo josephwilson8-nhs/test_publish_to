@@ -1,0 +1,31 @@
+name: 'Create release branch and dispatch follow up actions'
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+# add conditional gh repo view --json isPrivate | jq -r '.isPrivate'
+jobs:
+  push-release:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Read the release name and create a branch.
+        run: |
+          RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
+          git branch release/$RELEASE_NAME
+          git push origin release/$RELEASE_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dispatch echo jobs
+        run: |
+          curl -X POST \
+          curl -X POST \
+          -H "Authorization: Bearer ${{secrets.EXTERNAL_REPO_TOKEN}}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/josephwilson8-nhs/test_release_from/actions/workflows/recieve_trigger_and_pull_release.yml/dispatches \
+          -d '{"inputs": {"mode":"echo", "branch":"release/$RELEASE_NAME"}}'
