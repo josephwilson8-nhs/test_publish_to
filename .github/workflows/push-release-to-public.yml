@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Add the public repository as a remote
         run: |
-          git remote add public https://github.com/josephwilson8-nhs/test_publish_to.git
+          git remote add public https://${{ secrets.EXTERNAL_REPO_TOKEN }}@github.com/josephwilson8-nhs/test_publish_to.git
       - name: Read the release name and create a branch. Push branch to private and public.
         run: |
           RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
