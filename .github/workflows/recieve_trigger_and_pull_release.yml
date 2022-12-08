@@ -1,19 +1,12 @@
 name: "Pull in release branch"
 
 on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: "[echo] or execute"
-        default: "echo"
-      branch:
-        description: "branch to pull in"
-        required: true
+  repository_dispatch:
+    types: [release_event]
 
 jobs:
   echo-branch:
-    if: ${{ github.event.inputs.mode }} = "echo"
     runs-on: ubuntu-latest
     steps:
     - name: "echo dispatch"
-      run: echo "${{ github.event.inputs.branch }}"
+      run: echo "${{ github.event.client_payload.branch }}"
