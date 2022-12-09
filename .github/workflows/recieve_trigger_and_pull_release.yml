@@ -16,7 +16,10 @@ jobs:
     steps:
     - name: "Checkout code"
       uses: actions/checkout@v3
-
+    - name: Configure git
+      env:
+        TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
+      run: git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
     - name: "add private repository as remote"
       run: |
         git remote add private https://github.com/josephwilson8-nhs/test_publish_from
