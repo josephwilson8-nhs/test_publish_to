@@ -21,19 +21,19 @@ jobs:
       run: |
         git remote add private https://github.com/josephwilson8-nhs/test_publish_from
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
     - name: "Fetch release branch from private"
       run: |
         git fetch private ${{ github.event.client_payload.branch }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
     - name: "Create a new branch based of the private release branch"
       run: |
         git checkout -b ${{ github.event.client_payload.branch }} private/${{ github.event.client_payload.branch }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
     - name: "Push new release branch to origin"
       run: |
         git push origin ${{ github.event.client_payload.branch }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
