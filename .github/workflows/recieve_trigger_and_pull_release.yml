@@ -22,5 +22,5 @@ jobs:
         git remote add private https://github.com/josephwilson8-nhs/test_publish_to
         git fetch private ${{ github.event.client_payload.branch }}
         git checkout -b ${{ github.event.client_payload.branch }} private/${{ github.event.client_payload.branch }}
-        git push origin ${{ github.event.client_payload.branch }}
+        git push -u origin ${{ github.event.client_payload.branch }}
  
