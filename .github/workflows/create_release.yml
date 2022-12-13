@@ -7,7 +7,10 @@ on:
 
 jobs:
   release_if_merged:
-    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'release/v')
+    if: |
+      github.event.pull_request.merged == true && 
+      startsWith(github.head_ref, 'release/v') &&
+      github.repository == 'josephwilson8-nhs/test_publish_to'
     runs-on: ubuntu-latest
     steps:
       - name: Get Release Name from PR Branch Name and create a release
