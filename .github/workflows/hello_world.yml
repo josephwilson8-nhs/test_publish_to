@@ -1,11 +1,11 @@
-on:
-  push:
-    branches:
-    - release/*
-name: hello world workflow
-jobs:
-  create_pr:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello World
-        run: echo Hello World
+# name: hello world workflow
+# on:
+#   push:
+#     branches:
+#     - release/*
+# jobs:
+#   create_pr:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Say Hello World
+#         run: echo Hello World

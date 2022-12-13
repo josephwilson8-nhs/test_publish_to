@@ -20,8 +20,8 @@ jobs:
 
       - name: Read the release name and create a branch. Push branch to private and public.
         run: |
-          RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
-          RELEASE_BRANCH=release/$RELEASE_NAME-$(date +'%Y-%m-%dT%H%M')
+          RELEASE_NAME=$(gh release view --json name | jq -r '.name')
+          RELEASE_BRANCH=release/$RELEASE_NAME
           git branch $RELEASE_BRANCH
           git push origin $RELEASE_BRANCH
           git push public $RELEASE_BRANCH
