@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
+          fetch-depth: 0
 
       - name: Add the public repository as a remote
         run: |
@@ -24,7 +25,7 @@ jobs:
           RELEASE_NAME=$(gh release view --json name | jq -r '.name')
           RELEASE_BRANCH=release/$RELEASE_NAME
           git branch $RELEASE_BRANCH
-          git push -u -f origin $RELEASE_BRANCH
+          git push -u origin $RELEASE_BRANCH
           # git push -u public $RELEASE_BRANCH
         env:
           GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
