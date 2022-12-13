@@ -13,6 +13,11 @@ jobs:
       github.repository == 'josephwilson8-nhs/test_publish_to'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
+          fetch-depth: 0
       - name: Get Release Name from PR Branch Name and create a release
         run: |
           RELEASE_NAME=${HEAD_REF//release\//}
