@@ -22,8 +22,9 @@ jobs:
         run: |
           RELEASE_NAME=$(gh release view --json name | jq -r '.name')
           RELEASE_BRANCH=release/$RELEASE_NAME
-          git branch $RELEASE_BRANCH
-          git push origin $RELEASE_BRANCH
-          git push public $RELEASE_BRANCH
+          git remote -v
+          # git branch $RELEASE_BRANCH
+          # git push origin $RELEASE_BRANCH
+          # git push public $RELEASE_BRANCH
         env:
           GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
