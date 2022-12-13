@@ -8,6 +8,7 @@ on:
 jobs:
   push-release:
     runs-on: 'ubuntu-latest'
+    if: github.repository == 'josephwilson8-nhs/test_publish_from'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
