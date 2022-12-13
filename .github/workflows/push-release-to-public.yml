@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
 
       - name: Add the public repository as a remote
         run: |
@@ -19,8 +21,6 @@ jobs:
       - name: Read the release name and create a branch. Push branch to private and public.
         run: |
           RELEASE_NAME=$(gh release view v0.0.1 --json name | jq -r '.name')
-          git branch release/$RELEASE_NAME
+          git branch release/$RELEASE_NAME-$(date +'%Y-%m-%dT%H%M')
           git push origin release/$RELEASE_NAME
           git push public release/$RELEASE_NAME
-        env:
-          GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
