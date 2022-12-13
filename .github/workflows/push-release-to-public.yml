@@ -24,3 +24,5 @@ jobs:
           git branch release/$RELEASE_NAME-$(date +'%Y-%m-%dT%H%M')
           git push origin release/$RELEASE_NAME
           git push public release/$RELEASE_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
