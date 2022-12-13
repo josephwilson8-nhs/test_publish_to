@@ -8,6 +8,7 @@ on:
 jobs:
   create_pr:
     runs-on: ubuntu-latest
+    if: github.repository == 'josephwilson8-nhs/test_publish_to'
     steps:
       - uses: actions/checkout@v3
         with:
