@@ -15,14 +15,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        # with:
-        #   token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
-        #   fetch-depth: 0
       - name: Get Release Name from PR Branch Name and create a release
         run: |
           RELEASE_NAME=${HEAD_REF//release\//}
           gh release create $RELEASE_NAME -t $RELEASE_NAME
         env:
-          # GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEAD_REF: ${{ github.head_ref }}
