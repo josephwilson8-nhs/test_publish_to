@@ -1,4 +1,4 @@
-name: Create pull request for release branch
+name: Create Pull Request for Release Branch
 on:
   push:
     branches:
