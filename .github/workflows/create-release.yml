@@ -1,4 +1,4 @@
-name: 'Create a Release'
+name: "Create a Release"
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - closed
 
 jobs:
-  release_if_merged:
+  release-if-merged:
     if: |
       github.event.pull_request.merged == true && 
       startsWith(github.head_ref, 'release/v') &&
