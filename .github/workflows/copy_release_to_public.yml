@@ -48,6 +48,7 @@ jobs:
           cp -r private/. public/
           cd public
           ls -la
+          git status
 
       # - run: ls -la
 
