@@ -19,8 +19,8 @@ jobs:
       - name: Read the release name and create a branch. Push branch to private.
         run: |
           cd private
-          echo RELEASE_NAME=$(gh release view --json name | jq -r '.name') >> $GITHUB_ENV
-          echo RELEASE_BRANCH=release/${{ env.RELEASE_NAME }} >> $GITHUB_ENV
+          echo RELEASE_BRANCH=release/$(gh release view --json name | jq -r '.name') >> $GITHUB_ENV
+        #    echo RELEASE_BRANCH=release/${{ env.RELEASE_NAME }} >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
 
@@ -29,7 +29,6 @@ jobs:
       # - run: echo $GITHUB_WORKSPACE
 
       - run: |
-          echo ${{ env.RELEASE_NAME}}
           echo ${{ env.RELEASE_BRANCH }}
 
       # - name: Delete .git folder from private
