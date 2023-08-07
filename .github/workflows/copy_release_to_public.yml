@@ -16,9 +16,18 @@ jobs:
           path: private
         #   fetch-depth: 0
 
-      - run: echo $GITHUB_WORKSPACE
+      # - run: echo $GITHUB_WORKSPACE
 
-      - run: cd ..
+      - name: Delete .git folder from private
+        run: |
+          ls -la
+          echo rm -rf .git
+          ls -la
+
+      - run: echo $PWD
+
+      - name: Move into parent folder
+        run: cd ..
 
       - name: Checkout public
         uses: actions/checkout@v3
@@ -26,10 +35,6 @@ jobs:
           token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
           repository: josephwilson8-nhs/test_publish_to
           path: public
-
-      # - run: |
-      #     echo $PWD 
-      #     ls -la
 
       - name: Delete contents of public (apart from .git folder)
         run: |
