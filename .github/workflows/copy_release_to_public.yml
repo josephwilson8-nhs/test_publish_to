@@ -24,11 +24,10 @@ jobs:
           ls -la
           rm -rf .git
           ls -la
-
-      - run: echo $PWD
+          echo $PWD
 
       - name: Move into parent folder
-        run: cd ..
+        run: echo $PWD & cd .. & echo $PWD
 
       - name: Checkout public
         uses: actions/checkout@v3
@@ -40,6 +39,7 @@ jobs:
       - name: Delete contents of public (apart from .git folder)
         run: |
           cd public
+          echo $PWD
           ls -la
           find . -maxdepth 1 \( ! -name . -a ! -name .git \) -exec rm -fr {} +
           ls -la
