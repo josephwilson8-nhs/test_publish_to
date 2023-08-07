@@ -20,8 +20,7 @@ jobs:
         run: |
           cd private
           echo RELEASE_NAME=$(gh release view --json name | jq -r '.name') >> $GITHUB_ENV
-          RELEASE_BRANCH=release/${{ env.RELEASE_NAME }}
-          echo RELEASE_BRANCH=$RELEASE_BRANCH >> $GITHUB_ENV
+          echo RELEASE_BRANCH=release/${{ env.RELEASE_NAME }} >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.EXTERNAL_REPO_TOKEN }}
 
