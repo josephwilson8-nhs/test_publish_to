@@ -30,7 +30,7 @@ jobs:
       - name: Delete contents of public (apart from .git folder)
         run: |
           cd .. 
-          find public/ -path 'public/.git' -prune -o -exec rm -rf {} \;
+          find . -maxdepth 1 \( ! -name . -a ! -name public \) -exec echo rm -fr {} +
 
       - run: cd public & ls -la
 
