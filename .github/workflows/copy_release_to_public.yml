@@ -27,13 +27,17 @@ jobs:
           repository: josephwilson8-nhs/test_publish_to
           path: public
 
-      - run: echo $PWD
+      - run: |
+          echo $PWD 
+          ls -la
 
       - name: Delete contents of public (apart from .git folder)
         run: |
-          find . -maxdepth 1 \( ! -name . -a ! -name public \) -exec echo rm -fr {} +
+          cd public
+          ls -la
+          find . -maxdepth 1 \( ! -name . -a ! -name .git \) -exec echo rm -fr {} +
 
-      - run: ls -la
+      # - run: ls -la
 
       # - name: Add the public repository as a remote
       #   run: |
