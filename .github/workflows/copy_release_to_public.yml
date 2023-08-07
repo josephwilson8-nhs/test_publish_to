@@ -22,7 +22,7 @@ jobs:
         run: |
           cd private
           ls -la
-          echo rm -rf .git
+          rm -rf .git
           ls -la
 
       - run: echo $PWD
