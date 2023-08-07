@@ -18,6 +18,7 @@ jobs:
 
       - name: Read the release name and create a branch. Push branch to private.
         run: |
+          cd private
           echo RELEASE_NAME=$(gh release view --json name | jq -r '.name') >> $GITHUB_ENV
           RELEASE_BRANCH=release/${{ env.RELEASE_NAME }}
           echo RELEASE_BRANCH=$RELEASE_BRANCH >> $GITHUB_ENV
