@@ -15,10 +15,11 @@ jobs:
           token: ${{ secrets.EXTERNAL_REPO_TOKEN }}
         #   fetch-depth: 0
 
-      - name: Check CWD
-        run: |
-          echo $github.workspace
-          echo $PWD
+      - run: echo $GITHUB_WORKSPACE
+
+      - run: echo ${{ github.workspace }}
+
+      - run: echo $PWD
 
       # - name: Add the public repository as a remote
       #   run: |
