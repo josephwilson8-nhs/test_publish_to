@@ -27,15 +27,16 @@ jobs:
           repository: josephwilson8-nhs/test_publish_to
           path: public
 
-      - run: |
-          echo $PWD 
-          ls -la
+      # - run: |
+      #     echo $PWD 
+      #     ls -la
 
       - name: Delete contents of public (apart from .git folder)
         run: |
           cd public
           ls -la
-          find . -maxdepth 1 \( ! -name . -a ! -name .git \) -exec echo rm -fr {} +
+          find . -maxdepth 1 \( ! -name . -a ! -name .git \) -exec rm -fr {} +
+          ls -la
 
       # - run: ls -la
 
